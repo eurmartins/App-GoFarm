@@ -1,0 +1,140 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/background_gradient">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adicionar Cultura"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_marginBottom="24dp"/>
+
+
+    <EditText
+        android:id="@+id/nomeCultura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome da cultura"
+        android:padding="8dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginBottom="16dp"/>
+
+
+    <EditText
+        android:id="@+id/tipoCultura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tipo de cultura"
+        android:padding="8dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginBottom="16dp"/>
+
+
+    <EditText
+        android:id="@+id/cicloVida"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ciclo de vida"
+        android:padding="8dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginBottom="16dp"/>
+
+
+    <EditText
+        android:id="@+id/requisitosSolo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Requisitos de solo"
+        android:padding="8dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginBottom="16dp"/>
+
+
+    <EditText
+        android:id="@+id/requisitosAgua"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Requisitos de água"
+        android:padding="8dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginBottom="16dp"/>
+
+
+    <EditText
+        android:id="@+id/intervaloTemperatura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Intervalo de temperatura"
+        android:padding="8dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginBottom="16dp"/>
+
+
+    <EditText
+        android:id="@+id/requisitosUmidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Requisitos de umidade"
+        android:padding="8dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginBottom="16dp"/>
+
+
+    <EditText
+        android:id="@+id/pragasDoencas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Pragas e doenças"
+        android:padding="8dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginBottom="16dp"/>
+
+
+    <EditText
+        android:id="@+id/tempoColheita"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tempo de colheita (dias)"
+        android:padding="8dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/idEstufa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ID da Estufa"
+        android:padding="8dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginBottom="16dp"
+        android:inputType="number"/>
+
+
+    <Button
+        android:id="@+id/buttonSalvar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cadastrar Cultura"
+        android:layout_marginTop="-15dp"
+        android:backgroundTint="@color/green"
+        android:textColor="@color/black"/>
+
+
+    <Button
+        android:id="@+id/bt_voltarHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/red"
+        android:onClick="bt_voltarHome"
+        android:text="Voltar"
+        android:textColor="@color/black" />
+
+</LinearLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.pimivappmobile">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/networking_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PIMIVAPPMobile"
+        tools:targetApi="31">
+        <activity
+            android:name=".Activitys.EstoquedeSementesativas"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.EstoquedeSementesadd"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.EstoquedeSementes"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.Estufaspprocurar"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.EstoquedeMercadoriasprocurar"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.EstoquedeMercadorias"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.EstoquedeMercadoriasadd"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.Estufasadd"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.Estufa4"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.Estufa3"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.Estufa2"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.Estufa1"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.Estufas"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.Culturasativas"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.Culturasadd"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.Culturas"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.Home"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
