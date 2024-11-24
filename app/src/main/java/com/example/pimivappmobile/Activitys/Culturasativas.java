@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -51,9 +50,7 @@ public class Culturasativas extends AppCompatActivity {
     }
 
     private void searchForData(String searchId) {
-
-        String url = "http://192.168.15.46:8080/api/culturas/CulturaPorId/" + searchId;
-
+        String url = "http://192.168.15.46:8080/api/culturas/" + searchId;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET, url, null,
@@ -61,20 +58,28 @@ public class Culturasativas extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-
-                            String result = "Nome: " + response.getString("nome") + "\n";
-                            result += "Tipo de Cultura: " + response.getString("tipo_cultura") + "\n";
-                            result += "Requisitos de Solo: " + response.getString("requisitos_solo") + "\n";
-                            result += "Requisitos de Água: " + response.getString("requisitos_agua") + "\n";
-                            result += "Intervalo de Temperatura: " + response.getString("intervalo_temperatura") + "\n";
-                            result += "Requisitos de Umidade: " + response.getString("requisitos_umidade") + "\n";
-                            result += "Pragas e Doenças: " + response.getString("pragas_doencas") + "\n";
-                            result += "Tempo de Colheita: " + response.getInt("tempo_colheita") + " dias";
-
+                            String result = String.format(
+                                    "Nome: %s\n" +
+                                            "Tipo de Cultura: %s\n" +
+                                            "Requisitos de Solo: %s\n" +
+                                            "Requisitos de Água: %s\n" +
+                                            "Intervalo de Temperatura: %s\n" +
+                                            "Requisitos de Umidade: %s\n" +
+                                            "Pragas e Doenças: %s\n" +
+                                            "Tempo de Colheita: %d dias\n",
+                                    response.optString("nome", "Não disponível"),
+                                    response.optString("tipo_cultura", "Não disponível"),
+                                    response.optString("requisitos_solo", "Não disponível"),
+                                    response.optString("requisitos_agua", "Não disponível"),
+                                    response.optString("intervalo_temperatura", "Não disponível"),
+                                    response.optString("requisitos_umidade", "Não disponível"),
+                                    response.optString("pragas_doencas", "Não disponível"),
+                                    response.optInt("tempo_colheita", 0)
+                            );
 
                             searchResults.setText(result);
                             searchResults.setVisibility(View.VISIBLE);
-                        } catch (JSONException e) {
+                        } catch (Exception e) {
                             searchResults.setText("Erro ao processar os dados.");
                             searchResults.setVisibility(View.VISIBLE);
                         }
@@ -83,12 +88,15 @@ public class Culturasativas extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        searchResults.setText("Erro ao buscar dados: " + error.getMessage());
+                        if (error.networkResponse != null && error.networkResponse.statusCode == 404) {
+                            searchResults.setText("Cultura não encontrada para o ID informado.");
+                        } else {
+                            searchResults.setText("Erro ao buscar dados. Verifique a conexão.");
+                        }
                         searchResults.setVisibility(View.VISIBLE);
                     }
                 }
         );
-
 
         Volley.newRequestQueue(this).add(jsonObjectRequest);
     }

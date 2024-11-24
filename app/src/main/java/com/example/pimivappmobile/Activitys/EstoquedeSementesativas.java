@@ -64,13 +64,11 @@ public class EstoquedeSementesativas extends AppCompatActivity {
                             String nome = response.getString("nome");
                             String tipoCultura = response.getString("tipo_cultura");
                             int quantidade = response.getInt("quantidade");
-                            String unidadeMedida = response.getString("unidade_medida");
                             String fornecedor = response.getString("fornecedor");
 
 
                             String resultado = "Nome: " + nome + "\nTipo de Cultura: " + tipoCultura
-                                    + "\nQuantidade: " + quantidade + "\nUnidade de Medida: " + unidadeMedida
-                                    + "\nFornecedor: " + fornecedor;
+                                    + "\nQuantidade: " + quantidade + "\nFornecedor: " + fornecedor;
 
 
                             searchResults.setText(resultado);

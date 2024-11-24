@@ -79,11 +79,10 @@ public class Culturasadd extends AppCompatActivity {
 
         if (nome.isEmpty() || tipoCultura.isEmpty() || cicloVida.isEmpty() || requisitosSolo.isEmpty() ||
                 requisitosAgua.isEmpty() || intervaloTemperatura.isEmpty() || requisitosUmidade.isEmpty() ||
-                pragasDoencas.isEmpty() || tempoColheita.isEmpty()) {
+                pragasDoencas.isEmpty() || tempoColheita.isEmpty() || idEstufa.isEmpty()) {
             Toast.makeText(this, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
             return;
         }
-
 
         try {
             JSONObject culturaJson = new JSONObject();
@@ -96,32 +95,37 @@ public class Culturasadd extends AppCompatActivity {
             culturaJson.put("requisitos_umidade", requisitosUmidade);
             culturaJson.put("pragas_doencas", pragasDoencas);
             culturaJson.put("tempo_colheita", Integer.parseInt(tempoColheita));
-            culturaJson.put("estufa_id", idEstufa);
+
+
+            JSONObject estufaJson = new JSONObject();
+            estufaJson.put("id_estufa", Integer.parseInt(idEstufa));
+
+            culturaJson.put("estufa_id", estufaJson);
 
             String url = "http://192.168.15.46:8080/api/culturas";
 
-
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                    Request.Method.POST, url, culturaJson, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-
-                    Toast.makeText(Culturasadd.this, "Cultura cadastrada com sucesso!", Toast.LENGTH_SHORT).show();
-
-                    finish();
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    error.printStackTrace();
-                    Toast.makeText(Culturasadd.this, "Erro ao cadastrar cultura.", Toast.LENGTH_SHORT).show();
-                }
-            });
+                    Request.Method.POST, url, culturaJson,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Toast.makeText(Culturasadd.this, "Cultura cadastrada com sucesso!", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            error.printStackTrace();
+                            Toast.makeText(Culturasadd.this, "Erro ao cadastrar cultura.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
             requestQueue.add(jsonObjectRequest);
 
         } catch (Exception e) {
             e.printStackTrace();
+            Toast.makeText(this, "Erro ao criar JSON: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
